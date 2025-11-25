@@ -5,7 +5,9 @@ import (
 )
 
 // Есть функция generate(), которая генерит числа. Функция использует канал
-// отмены. Переделать на контекст.
+// отмены. Переделать на контекст: 'Done!' в 18-ой строке должно быть выведено
+// на экран.
+
 func generate(cancel <-chan struct{}, start int) <-chan int {
 	out := make(chan int)
 	go func() {
@@ -14,6 +16,7 @@ func generate(cancel <-chan struct{}, start int) <-chan int {
 			select {
 			case out <- i:
 			case <-cancel:
+				fmt.Println("Done!")
 				return
 			}
 		}

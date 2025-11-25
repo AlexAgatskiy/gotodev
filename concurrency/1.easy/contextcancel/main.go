@@ -7,6 +7,7 @@ import (
 
 // Что будет, если один и тот же контекст отменить дважды. Почему?
 // Подумать и только после этого запустить программу.
+
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 
